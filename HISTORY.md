@@ -90,4 +90,46 @@ echo "v18.16.1" > .nvmrc
 # Check
 node --version
 # v18.16.1
+
+# Update latest npm
+npm install -g npm@latest
+
+# Check
+npm --version
+# 9.8.0
 ```
+
+### A-3. Create Next App
+
+Follow up [this document (Start a New React Project > Next.js)](https://react.dev/learn/start-a-new-react-project#nextjs)
+
+```bash
+# Create under './temp' directory
+npx create-next-app@latest temp
+
+  Need to install the following packages:
+    create-next-app@13.4.9
+  Ok to proceed? (y) y
+  ✔ Would you like to use TypeScript? … # Yes
+  ✔ Would you like to use ESLint? … # Yes
+  ✔ Would you like to use Tailwind CSS? … # No
+  ✔ Would you like to use `src/` directory? … # No
+  ✔ Would you like to use App Router? (recommended) … # Yes
+  ✔ Would you like to customize the default import alias? … # Yes
+  ✔ What import alias would you like configured? … # @/*
+
+# Remove useless files under './temp' directory
+rm -rf ./temp/node_modules ./temp/.gitignore
+
+# Move all contents from './temp' directory to 'root' of repository
+mv ./temp/README.md ./HELP.md
+mv ./temp/* ./temp/.* .
+
+# Remove './temp' directory
+rm -rf ./temp
+
+# Reinstall CNA(create-next-app) along with 'package-lock.json'
+npm ci
+```
+
+Check [HELP.md](./HELP.md)

@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,sublimetext,node,react,storybookjs
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,visualstudiocode,sublimetext,node,react,storybookjs
+# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,sublimetext,node,react,nextjs,storybookjs
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,visualstudiocode,sublimetext,node,react,nextjs,storybookjs
 
 ### macOS ###
 # General
@@ -34,15 +34,46 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### NextJS ###
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
 ### Node ###
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 lerna-debug.log*
-.pnpm-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -83,7 +114,6 @@ jspm_packages/
 web_modules/
 
 # TypeScript cache
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -271,4 +301,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,sublimetext,node,react,storybookjs
+# End of https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,sublimetext,node,react,nextjs,storybookjs
