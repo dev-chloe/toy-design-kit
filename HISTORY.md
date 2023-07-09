@@ -27,3 +27,5 @@ git push -u origin $(git branch --show-current)
 # Check
 git log --oneline
 ```
+
+Add [`.gitignore`](.gitignore) from [gitignore.io - Toptal](https://www.toptal.com/developers/gitignore)
