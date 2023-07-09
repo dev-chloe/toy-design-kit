@@ -1,0 +1,163 @@
+# HISTORY OF DESIGN KIT
+
+## A. Initiate
+
+### A-1. Version control setup
+
+```bash
+# Create local git repository
+mkdir toy-design-kit && cd toy-design-kit
+git init
+git branch -M main
+
+# Create initial commit
+echo "# Toy Design Kit" >> README.md
+git add -A
+git commit -m "first commit"
+
+# Set remote git repository
+git remote add origin https://github.com/dev-chloe/toy-design-kit.git
+git remote -v
+# origin  https://github.com/dev-chloe/toy-design-kit.git (fetch)
+# origin  https://github.com/dev-chloe/toy-design-kit.git (push)
+
+# After create remote repositiory, then upload
+git push -u origin $(git branch --show-current)
+
+# Check
+git log --oneline
+```
+
+Add [`.gitignore`](.gitignore) from [gitignore.io - Toptal](https://www.toptal.com/developers/gitignore)
+
+### A-2. Node.js version setup
+
+#### Install [`nvm` (Node Version Manager)](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+```bash
+# Check
+nvm --version
+```
+
+For automation, add below script in your shell profile (ex. `~/.zshrc`)
+
+```bash
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+```
+
+#### Node version fix
+
+Check [node.js version release schedule](https://github.com/nodejs/release#readme)
+
+```bash
+# Fix node version in project
+echo "v18.16.1" > .nvmrc
+
+# Reopen the terminal
+# Found '/Users/chloekim/workspace/study/toy-design-kit/.nvmrc' with version <v18.16.1>
+# Downloading and installing node v18.16.1...
+# Downloading https://nodejs.org/dist/v18.16.1/node-v18.16.1-darwin-x64.tar.xz...
+# ###################################################################################### 100.0%
+# Computing checksum with shasum -a 256
+# Checksums matched!
+# Now using node v18.16.1 (npm v9.5.1)
+
+# Check
+node --version
+# v18.16.1
+
+# Update latest npm
+npm install -g npm@latest
+
+# Check
+npm --version
+# 9.8.0
+```
+
+### A-3. Create Next App
+
+Follow up [this document (Start a New React Project > Next.js)](https://react.dev/learn/start-a-new-react-project#nextjs)
+
+```bash
+# Create under './temp' directory
+npx create-next-app@latest temp
+
+  Need to install the following packages:
+    create-next-app@13.4.9
+  Ok to proceed? (y) y
+  ✔ Would you like to use TypeScript? … # Yes
+  ✔ Would you like to use ESLint? … # Yes
+  ✔ Would you like to use Tailwind CSS? … # No
+  ✔ Would you like to use `src/` directory? … # No
+  ✔ Would you like to use App Router? (recommended) … # Yes
+  ✔ Would you like to customize the default import alias? … # Yes
+  ✔ What import alias would you like configured? … # @/*
+
+# Remove useless files under './temp' directory
+rm -rf ./temp/node_modules ./temp/.gitignore
+
+# Move all contents from './temp' directory to 'root' of repository
+mv ./temp/README.md ./HELP.md
+mv ./temp/* ./temp/.* .
+
+# Remove './temp' directory
+rm -rf ./temp
+
+# Reinstall CNA(create-next-app) along with 'package-lock.json'
+npm ci
+```
+
+Check [HELP.md](./HELP.md)
+
+### A-4. Install Storybook
+
+Follow up [this document (Install Storybook)](https://storybook.js.org/docs/react/get-started/install)
+
+```bash
+npx storybook@latest init
+
+    Need to install the following packages:
+      storybook@7.0.26
+    Ok to proceed? (y) # y
+
+    storybook init - the simplest way to add a Storybook to your project. 
+
+    • Detecting project type. ✓
+    • Adding Storybook support to your "Next" app
+      ✔ Getting the correct version of 8 packages
+    ✔ We have detected that you are using ESLint. Storybook provides a plugin that gives the best experience with Storybook and helps follow best practices: https://github.com/storybookjs/eslint-plugin-storybook#readme
+
+    Would you like to install it? … # yes
+        Configuring Storybook ESLint plugin at .eslintrc.json
+      ✔ Installing Storybook dependencies
+    . ✓
+    • Preparing to install dependencies. ✓
+
+# Start
+npm run storybook
+```
