@@ -133,3 +133,31 @@ npm ci
 ```
 
 Check [HELP.md](./HELP.md)
+
+### A-4. Install Storybook
+
+Follow up [this document (Install Storybook)](https://storybook.js.org/docs/react/get-started/install)
+
+```bash
+npx storybook@latest init
+
+    Need to install the following packages:
+      storybook@7.0.26
+    Ok to proceed? (y) # y
+
+    storybook init - the simplest way to add a Storybook to your project. 
+
+    • Detecting project type. ✓
+    • Adding Storybook support to your "Next" app
+      ✔ Getting the correct version of 8 packages
+    ✔ We have detected that you are using ESLint. Storybook provides a plugin that gives the best experience with Storybook and helps follow best practices: https://github.com/storybookjs/eslint-plugin-storybook#readme
+
+    Would you like to install it? … # yes
+        Configuring Storybook ESLint plugin at .eslintrc.json
+      ✔ Installing Storybook dependencies
+    . ✓
+    • Preparing to install dependencies. ✓
+
+# Start
+npm run storybook
+```
