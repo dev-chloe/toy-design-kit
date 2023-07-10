@@ -161,3 +161,80 @@ npx storybook@latest init
 # Start
 npm run storybook
 ```
+
+## B. Develop Storybook
+
+> Read more: [**Storybook for Next.js**](https://github.com/storybookjs/storybook/tree/next/code/frameworks/nextjs#readme)
+
+### B-1. Use [@storybook/addon-designs](https://github.com/storybookjs/addon-designs#readme)
+
+> A Storybook addon that embed Figma or websites in the addon panel for better design-development workflow.
+
+1. Install
+
+    ```bash
+    npm install -D @storybook/addon-designs
+    ```
+
+2. Register the addon in [`main.ts`](.storybook/main.ts)
+
+    ```typescript
+    // .storybook/main.ts
+    import type { StorybookConfig } from "@storybook/nextjs";
+    const config: StorybookConfig = {
+      // ...
+      addons: [
+        "@storybook/addon-designs", // add this!
+      ],
+      // ...
+    };
+    ```
+
+3. Set environment variable: `TOY_DK_FIGMA_URL`
+
+    ```bash
+    # Setting
+    export TOY_DK_FIGMA_URL="__FIGMA_PROJECT_URL__"
+    
+    # Check
+    env | grep "TOY_DK"
+    ```
+
+    Copy the value to `.env` file using [`envsubst`](https://www.baeldung.com/linux/envsubst-command)
+
+    ```bash
+    # Backup first, if exist
+    [ -f .env ] \
+      && mv .env ".env.x.$(date '+%y-%m-%d_%H-%M-%S')" \
+      || echo "Nothing to backup"
+
+    # Set on file
+    envsubst < .env.template >> .env
+    ```
+
+    Add [`.gitignore`](.gitignore) for all `.env` files exclude [`.env.template`](./.env.template)
+
+    ```gitignore
+    ### Injection Poinst - Sensivie Data ###
+    *.env.*
+    !.env.template
+    ```
+
+4. [Add it to story!](https://github.com/storybookjs/addon-designs#3-add-it-to-story)
+
+    ```typescript
+    // stories/*.stories.ts
+    const figmaUrl = process.env.TOY_DK_FIGMA_URL;
+
+    const meta: Meta<typeof C> = {
+      // ...
+      parameters: {
+        design: {
+          type: 'figma',
+          url: `${figmaUrl}?node-id=0-0`
+        }
+      }
+    };
+    ```
+
+    > TODO: Follow up the issue: [StorybookConfig 'env' key type error](https://github.com/storybookjs/storybook/issues/19691)

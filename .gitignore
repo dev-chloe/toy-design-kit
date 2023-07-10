@@ -1,3 +1,7 @@
+### Injection Poinst - Sensivie Data ###
+*.env.*
+!.env.template
+
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,sublimetext,node,react,nextjs,storybookjs
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,visualstudiocode,sublimetext,node,react,nextjs,storybookjs
 
