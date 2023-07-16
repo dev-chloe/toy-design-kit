@@ -162,6 +162,60 @@ npx storybook@latest init
 npm run storybook
 ```
 
+### A-5. Install husky
+
+Follow up [this document (Install husky)](https://typicode.github.io/husky/getting-started.html)
+
+#### A-5-1. Enable husky
+
+```bash
+# husky-init is a one-time command to quickly initialize a project with husky.
+npx husky-init && npm install
+```
+
+Check [the `prepare` script in `package.json`](./package.json#L6)
+
+```bash
+# If not enabled, try manually
+npm run prepare
+  # husky - Git hooks installed
+```
+
+#### A-5-2. Block to commit on long-reserved branch directly
+
+Edit [`.husky/pre-commit`](.husky/pre-commit) file like below:
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+prefix="husky ::"
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+# Block to long-lived branch(main) directly.
+echo ""
+echo "${prefix} [INFO] This is '${branch}' branch."
+if [ "$branch" = "main" ]; then
+  echo ""
+  echo "${prefix} [WARN] You can't commit directly to main branch."
+  echo "${prefix} [HINT] Create a support branch first."
+  echo ""
+  echo "       $ git switch -c <new_branch_name>"
+  echo ""
+  exit 1
+fi
+
+# Test First
+# echo ""
+# echo "${prefix} [INFO] Test before commit."
+# npm run test && echo ""
+
+# Lint First
+echo ""
+echo "${prefix} [INFO] Lint before commit."
+npm run lint && echo ""
+```
+
 ## B. Develop Storybook
 
 > Read more: [**Storybook for Next.js**](https://github.com/storybookjs/storybook/tree/next/code/frameworks/nextjs#readme)
