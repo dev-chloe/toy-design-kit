@@ -292,3 +292,10 @@ npm run lint && echo ""
     ```
 
     > TODO: Follow up the issue: [StorybookConfig 'env' key type error](https://github.com/storybookjs/storybook/issues/19691)
+
+### B-2. Use SCSS
+
+> When using `@storybook/nextjs`, you don't need to configure sass.
+> [**Just add scss file**](./stories/Atoms/Button/Button.tsx#L2).
+>
+> Read more. [storybook.js issue - SaasError: expected "{"](https://github.com/storybookjs/storybook/issues/19266#issuecomment-1499220336)
