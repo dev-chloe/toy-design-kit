@@ -299,3 +299,25 @@ npm run lint && echo ""
 > [**Just add scss file**](./stories/Atoms/Button/Button.tsx#L2).
 >
 > Read more. [storybook.js issue - SaasError: expected "{"](https://github.com/storybookjs/storybook/issues/19266#issuecomment-1499220336)
+
+## C. Publish Storybook
+
+### C-1. Build Storybook as static page
+
+```bash
+# (option) Prepare serve engine for static web hosting
+npm install --global serve
+```
+
+```bash
+# Build
+npm run build-storybook
+
+# Hosting
+serve --listen 16006 ./storybook-static
+
+# Check in the browser
+open http://localhost:16006/
+```
+
+- Ref. [serve](https://www.npmjs.com/package/serve) [by. Vercel](https://github.com/vercel/serve#readme)
