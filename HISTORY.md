@@ -321,3 +321,91 @@ open http://localhost:16006/
 ```
 
 - Ref. [serve](https://www.npmjs.com/package/serve) [by. Vercel](https://github.com/vercel/serve#readme)
+
+### C-2. Prepare AWS resources
+
+1. Prepare AWS CLI v2 (check [other ways](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html)):
+
+    ```bash
+    # Install
+    brew install awscli
+
+    # Check
+    aws --version
+      # aws-cli/2.xx.x ...
+    ```
+
+    ```bash
+    # Install recommend
+    brew install jq
+
+    # Check
+    jq --version
+      # jq-1.6
+    ```
+
+2. [Set AWS credetials (after IAM user & role setting)](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-configure-files.html#cli-configure-files-methods):
+
+    ```bash
+    # Save credentials
+    aws configure
+      # AWS Access Key ID [None]: (paste the Access Key ID)
+      # AWS Secret Access Key [None]: (paste the Secret Access Key)
+      # Default region name [None]: ap-northeast-2
+      # Default output format [None]: json
+
+    # Check the sensitive data
+    cat ~/.aws/credentials
+
+    # Set profile
+    export AWS_PROFILE="__profile_name__"
+
+    # Check the credentials
+    aws sts get-caller-identity --output=json | jq
+    ```
+
+3. [Create new bucket using Amazon S3](https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/creating-bucket.html):
+    `story.poc-in.site`
+
+    ```bash
+    # Check the created bucket exist
+    aws s3 ls | grep "story.poc-in.site"
+    ```
+
+    Ref. [`aws s3 ls` command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html)
+
+4. [Create new public certificate using AWS Certificate Manager](https://docs.aws.amazon.com/ko_kr/acm/latest/userguide/gs-acm-request-public.html)  
+    Then, record to DNS service to validate the certificate:
+
+    ```bash
+    # Check the DNS record
+    nslookup <CNAME>
+    # or
+    dig <CNAME>
+    ```
+
+5. [Create new distribution using AWS CloudFront](https://docs.aws.amazon.com/ko_kr/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
+
+6. [Deploy the static storybook to Amazon S3 bucket](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-managing-objects-sync):
+
+    ```bash
+    # Set environment variable
+    export SOURCE_DIST="storybook-static"
+    export TARGET_BUCKET="story.poc-in.site"
+    env | egrep "SOURCE_DIST|TARGET_BUCKET"
+    
+    # Check local directory(source)
+    ls -shl "./${SOURCE_DIST}/."
+
+    # Sync objects from source to target
+    aws s3 sync "./${SOURCE_DIST}/." "s3://${TARGET_BUCKET}"
+
+    # Check remote S3 bucket(target)
+    aws s3 ls "s3://${TARGET_BUCKET}"
+    ```
+
+7. Check on my browser:
+
+    ```bash
+    open https://story.poc-in.site/
+    ```
