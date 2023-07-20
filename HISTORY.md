@@ -409,3 +409,25 @@ open http://localhost:16006/
     ```bash
     open https://story.poc-in.site/
     ```
+
+## D. Publish react components
+
+### D-1. Select package registry
+
+- **Vendor-managed services**
+
+  - [x] [NPM packages](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) (default)
+  - [ ] [GitHub packages](https://docs.github.com/ko/packages/learn-github-packages/publishing-a-package)
+  - [ ] [AWS CodeArtifact](https://docs.aws.amazon.com/ko_kr/codeartifact/latest/ug/welcome.html)
+
+- **Self-managed services**
+
+  - [ ] [Sonartype Nexus OSS](https://github.com/sonatype/nexus-public#readme)
+  - [ ] [JFlog Artifactory](https://jfrog.awsworkshop.io/1_introduction.html)
+
+### D-2. Select package privacy
+
+- [scoped public package](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages)
+
+- Select package name with [package name guidelines](https://docs.npmjs.com/package-name-guidelines):
+  [`toy-design-kit`](https://www.npmjs.com/search?q=toy-design-kit)

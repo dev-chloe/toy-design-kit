@@ -4,20 +4,16 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build": "npm run build-storybook && npm run build-design-kit",
+    "build-storybook": "storybook build",
+    "build-design-kit": ""
   },
   "dependencies": {
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
-    "eslint": "8.44.0",
-    "eslint-config-next": "13.4.9",
-    "next": "13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.1.6"
@@ -32,7 +28,10 @@
     "@storybook/nextjs": "^7.0.27",
     "@storybook/react": "^7.0.27",
     "@storybook/testing-library": "^0.2.0",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.9",
     "eslint-plugin-storybook": "^0.6.12",
+    "next": "13.4.9",
     "husky": "^8.0.0",
     "storybook": "^7.0.27"
   }
