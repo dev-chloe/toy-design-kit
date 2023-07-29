@@ -1,8 +1,7 @@
 import { ButtonProps } from "./types";
-import "./Button.css";
-import "./Button2.css";
+import "./index.css";
 
-function Button({
+function Button2({
   kind,
   label,
   disabled = false,
@@ -19,4 +18,4 @@ function Button({
   );
 }
 
-export { Button };
+export { Button2 };

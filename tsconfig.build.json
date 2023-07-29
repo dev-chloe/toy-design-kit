@@ -1,0 +1,34 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Input sources
+    "rootDir": "./stories",
+    // Compiled files
+    "outDir": "./dist",
+    "sourceMap": false, // https://www.typescriptlang.org/tsconfig#sourceMap
+    // Preserve type decration
+    "emitDeclarationOnly": true, // https://www.typescriptlang.org/tsconfig#emitDeclarationOnly
+    "declaration": true, // https://www.typescriptlang.org/tsconfig#declaration
+    "declarationDir": "./dist" // https://www.typescriptlang.org/tsconfig#declarationDir
+    // Module porting (include scss file)
+    // "allowSyntheticDefaultImports": true, // https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
+    // "esModuleInterop": true // https://www.typescriptlang.org/tsconfig#esModuleInterop
+  },
+  "include": [
+    // React components
+    "stories/Atoms/**.*",
+    "stories/Example/**.*",
+    "stories/styles/**.*",
+    "stories/theme/**.*",
+    "stories/*.ts"
+  ],
+  "exclude": [
+    // Storybook examples
+    // "stories/Examples/**.*",
+    // Local testing next components
+    "app/**/*",
+    // Storybook modules
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ]
+}

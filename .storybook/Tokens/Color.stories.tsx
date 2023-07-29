@@ -13,7 +13,7 @@ export default {
   },
 };
 
-export function Default(): JSX.Element {
+export function Default(): React.JSX.Element {
   return (
     <div style={{ display: "flex", gap: "8px" }}>
       {Object.entries(theme.colors).map(([key, value]) => (
@@ -25,7 +25,7 @@ export function Default(): JSX.Element {
   );
 }
 
-function ColorChip({ colorName, colorCode }): JSX.Element {
+function ColorChip({ colorName, colorCode }): React.JSX.Element {
   return (
     <>
       <div

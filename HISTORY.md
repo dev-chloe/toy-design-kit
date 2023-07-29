@@ -293,7 +293,7 @@ npm run lint && echo ""
 
     > TODO: Follow up the issue: [StorybookConfig 'env' key type error](https://github.com/storybookjs/storybook/issues/19691)
 
-### B-2. Use SCSS
+### B-2. ~~Use SCSS~~ (Replace to [Use rollup-plugin-scss](#d-4-1-use-rollup-plugin-scss))
 
 > When using `@storybook/nextjs`, you don't need to configure sass.
 > [**Just add scss file**](./stories/Atoms/Button/Button.tsx#L2).
@@ -390,15 +390,14 @@ open http://localhost:16006/
 
     ```bash
     # Set environment variable
-    export SOURCE_DIST="storybook-static"
     export TARGET_BUCKET="story.poc-in.site"
-    env | egrep "SOURCE_DIST|TARGET_BUCKET"
+    env | grep "TARGET_BUCKET"
     
     # Check local directory(source)
-    ls -shl "./${SOURCE_DIST}/."
+    ls -shl "./storybook-static/."
 
     # Sync objects from source to target
-    aws s3 sync "./${SOURCE_DIST}/." "s3://${TARGET_BUCKET}"
+    aws s3 sync "./storybook-static/." "s3://${TARGET_BUCKET}"
 
     # Check remote S3 bucket(target)
     aws s3 ls "s3://${TARGET_BUCKET}"
@@ -431,3 +430,46 @@ open http://localhost:16006/
 
 - Select package name with [package name guidelines](https://docs.npmjs.com/package-name-guidelines):
   [`toy-design-kit`](https://www.npmjs.com/search?q=toy-design-kit)
+
+- TODO: LICENSE
+
+### D-3. Setup Rollup.js
+
+[Installing Rollup locally](https://rollupjs.org/tutorial/#installing-rollup-locally)
+
+```bash
+# Insatll
+npm install --save-dev rollup
+
+# Check
+npx rollup --version
+
+# Install plugin for typescript module
+npm install --save-dev @rollup/plugin-typescript
+```
+
+Setup configuration:
+
+- [`tsconfig.build.json`](./tsconfig.build.json)
+- [`rollup.config.ts`](./rollup.config.ts)
+- plugin configurations:
+  - [basic](https://rollupjs.org/command-line-interface/#configplugin-plugin)
+  - [@rollup/plugin-typescript](https://github.com/rollup/plugins/tree/master/packages/typescript#readme)
+
+```bash
+# Test build
+npx rollup \
+  --config rollup.config.ts \
+  --configPlugin typescript
+```
+
+### D-4. Add Rollup.js Plugins
+
+#### D-4-1. Use rollup-plugin-scss
+
+```bash
+# Install plugin for PostCSS
+npm install --save-dev rollup-plugin-scss
+```
+
+References:
