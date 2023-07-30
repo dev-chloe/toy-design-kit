@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Button } from "./Button";
 
 const figmaUrl = process.env.TOY_DK_FIGMA_URL;

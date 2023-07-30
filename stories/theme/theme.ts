@@ -12,4 +12,4 @@ const theme: DefaultTheme = {
   colors,
 };
 
-export { theme };
+export { colors, theme };
