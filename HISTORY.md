@@ -293,12 +293,58 @@ npm run lint && echo ""
 
     > TODO: Follow up the issue: [StorybookConfig 'env' key type error](https://github.com/storybookjs/storybook/issues/19691)
 
-### B-2. ~~Use SCSS~~ (Replace to [Use rollup-plugin-scss](#d-4-1-use-rollup-plugin-scss))
+### B-2. ~~Use SCSS~~ -> Replace to [use `styled-components`](#b-3-use-styled-components)
+
+<details>
+<summary>History about <code>.scss</code> file usage:</summary>
+<br/>
 
 > When using `@storybook/nextjs`, you don't need to configure sass.
 > [**Just add scss file**](./stories/Atoms/Button/Button.tsx#L2).
 >
 > Read more. [storybook.js issue - SaasError: expected "{"](https://github.com/storybookjs/storybook/issues/19266#issuecomment-1499220336)
+
+</details>
+
+### B-3. Use [styled-components](https://styled-components.com/docs/basics#installation)
+
+```bash
+# Install version 5
+npm install styled-components@">=5.3.6 <6.0.0"
+npm install --save-dev @types/styled-components@">=5.1.26 <6.0.0"
+```
+
+> _**Note:** Maybe need to migrate from 5 to 6 on `styled-components` library_
+>
+> The package [`@types/styled-compnents` still latest version is `5.1.26` version before a years ago](https://www.npmjs.com/package/@types/styled-components?activeTab=versions).
+> And the package [`styled-components` is recently edited at `6.0.x` version, but major usages are at `5.3.x` version.](https://www.npmjs.com/package/styled-components?activeTab=versions).
+
+```ruby
+# Related scripts
+./
+├── .storybook/
+│   ├── Tokens/
+│   │   └── Color.stories.tsx
+│   ├── decorators./
+│   │   ├── index.js
+│   │   └── withTheme.decorator.js
+│   ├── main.ts
+│   └── preview.ts
+│
+└── stories/
+    ├── Atoms/
+    │   ├── Button/
+    │   │   ├── Button.stories.tsx
+    │   │   ├── Button.styled.ts
+    │   │   ├── Button.tsx
+    │   │   ├── Button.types.ts
+    │   │   └── index.ts
+    │   └── index.ts
+    └── theme/
+        ├── index.ts
+        ├── theme.ts
+        └── types.ts
+```
 
 ## C. Publish Storybook
 
@@ -462,14 +508,3 @@ npx rollup \
   --config rollup.config.ts \
   --configPlugin typescript
 ```
-
-### D-4. Add Rollup.js Plugins
-
-#### D-4-1. Use rollup-plugin-scss
-
-```bash
-# Install plugin for PostCSS
-npm install --save-dev rollup-plugin-scss
-```
-
-References:

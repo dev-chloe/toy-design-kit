@@ -1,3 +1,5 @@
+import 'styled-components';
+
 type Colors = {
   black: string;
   gray: string;
@@ -5,8 +7,10 @@ type Colors = {
   accent: string;
 };
 
-type DefaultTheme = {
-  colors: Colors;
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    colors: Colors;
+  }
 };
 
-export type { Colors, DefaultTheme };
+export type { Colors };

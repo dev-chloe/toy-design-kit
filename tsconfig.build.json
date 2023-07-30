@@ -10,21 +10,17 @@
     "emitDeclarationOnly": true, // https://www.typescriptlang.org/tsconfig#emitDeclarationOnly
     "declaration": true, // https://www.typescriptlang.org/tsconfig#declaration
     "declarationDir": "./dist" // https://www.typescriptlang.org/tsconfig#declarationDir
-    // Module porting (include scss file)
-    // "allowSyntheticDefaultImports": true, // https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
-    // "esModuleInterop": true // https://www.typescriptlang.org/tsconfig#esModuleInterop
   },
   "include": [
     // React components
     "stories/Atoms/**.*",
-    "stories/Example/**.*",
     "stories/styles/**.*",
     "stories/theme/**.*",
     "stories/*.ts"
   ],
   "exclude": [
     // Storybook examples
-    // "stories/Examples/**.*",
+    "stories/Examples/**.*",
     // Local testing next components
     "app/**/*",
     // Storybook modules

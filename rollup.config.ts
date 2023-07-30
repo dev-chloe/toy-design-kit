@@ -1,6 +1,4 @@
-import jsx from "acorn-jsx";
-import scss from "rollup-plugin-scss";
-import { mkdirSync, writeFileSync } from "fs";
+import jsx from "acorn-jsx"
 import typescript from "@rollup/plugin-typescript";
 
 const commonOutputConfig = {
@@ -27,27 +25,12 @@ const config = {
       ...commonOutputConfig,
     },
   ],
-  acornInjectPlugins: [jsx()], // using css import
+  acornInjectPlugins: [jsx()], // tsx to jsx
   plugins: [
     typescript({
       tsconfig: "./tsconfig.build.json",
       declaration: true,
       declarationDir: 'dist',
-    }),
-    scss({
-      verbose: true,
-      output: (styles, styleNodes) => {
-        for (const filePathKey in styleNodes) {
-          const chunk = filePathKey.replace(/stories/, "dist").split("/");
-          const filename = chunk.pop();
-          if (filename) {
-            const cssFolderPath = chunk.join("/");
-            mkdirSync(cssFolderPath, { recursive: true });
-            const cssfilename = filename.replace(/scss$/, "css"); // remove scss file name
-            writeFileSync(`${cssFolderPath}/${cssfilename}`, styleNodes[filePathKey]);
-          }
-        }
-      }
     }),
   ],
   external: [

@@ -1,2 +1,1 @@
-export * from "./Button";
-export * from "./Button2";
+export * as Button from "./Button";
