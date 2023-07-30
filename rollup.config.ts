@@ -33,7 +33,7 @@ const config = {
       declarationDir: "dist",
     }),
   ],
-  external: ["react"],
+  external: ["react", "styled-components"],
 };
 
 export default config;
