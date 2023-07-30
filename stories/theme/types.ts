@@ -1,4 +1,4 @@
-import 'styled-components';
+import "styled-components";
 
 type Colors = {
   black: string;
@@ -7,10 +7,10 @@ type Colors = {
   accent: string;
 };
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     colors: Colors;
   }
-};
+}
 
 export type { Colors };

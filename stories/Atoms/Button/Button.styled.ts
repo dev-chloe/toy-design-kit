@@ -4,7 +4,7 @@ import { RootStyleProps } from "./Button.types";
 function getKindStyles({ kind, theme }: ThemedStyledProps<RootStyleProps, DefaultTheme>) {
   const { colors } = theme;
   switch (kind) {
-    case 'primary':
+    case "primary":
       return css`
         background: ${colors.accent};
         color: ${colors.white};
@@ -14,8 +14,8 @@ function getKindStyles({ kind, theme }: ThemedStyledProps<RootStyleProps, Defaul
           background: ${colors.white};
           color: ${colors.accent};
         }
-      `
-    case 'secondary':
+      `;
+    case "secondary":
       return css`
         background: ${colors.black};
         color: ${colors.white};
@@ -24,13 +24,13 @@ function getKindStyles({ kind, theme }: ThemedStyledProps<RootStyleProps, Defaul
           background: ${colors.white};
           color: ${colors.black};
         }
-      `
-    case 'ghost':
+      `;
+    case "ghost":
       return css`
         background: ${colors.gray};
         color: ${colors.white};
         border: 1px solid ${colors.gray};
-      `
+      `;
   }
 }
 

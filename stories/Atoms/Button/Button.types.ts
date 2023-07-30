@@ -1,5 +1,8 @@
-type Kind = 'primary' | 'secondary' | 'ghost';
-type Type = 'button' | 'submit';
+import React from "react";
+
+type Kind = "primary" | "secondary" | "ghost";
+
+type Type = "button" | "submit";
 
 type RootStyleProps = {
   disabled?: boolean;
