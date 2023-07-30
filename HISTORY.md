@@ -216,6 +216,14 @@ echo "${prefix} [INFO] Lint before commit."
 npm run lint && echo ""
 ```
 
+#### A-5-3. Set formatter use [JS Standard Style](https://standardjs.com/index.html#install)
+
+Using with ESLint: [`eslint-config-standard`](https://github.com/standard/eslint-config-standard#readme)
+
+```bash
+npm install --save-dev eslint-config-standard
+```
+
 ## B. Develop Storybook
 
 > Read more: [**Storybook for Next.js**](https://github.com/storybookjs/storybook/tree/next/code/frameworks/nextjs#readme)

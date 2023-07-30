@@ -1,3 +1,4 @@
+import React from "react";
 import { Root as StyledRoot } from "./Button.styled";
 import { ButtonProps } from "./Button.types";
 

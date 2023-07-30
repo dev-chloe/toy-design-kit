@@ -10,7 +10,7 @@ const meta: Meta<typeof Button> = {
   parameters: {
     design: {
       type: "figma",
-      url: `${figmaUrl}?node-id=1-29`,
+      url: `${ figmaUrl }?node-id=1-29`,
     },
   },
 };
