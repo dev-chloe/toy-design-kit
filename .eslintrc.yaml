@@ -3,6 +3,7 @@ root: true
 
 extends:
   - standard # https://github.com/standard/eslint-config-standard#readme
+  - prettier # https://github.com/prettier/eslint-config-prettier#readme
   - next/core-web-vitals
   - plugin:storybook/recommended
 
@@ -13,7 +14,7 @@ rules:
   semi: ["error", "always"]
   comma-dangle: ["error", "always-multiline"]
   eol-last: ["error", "always"]
-  template-curly-spacing: ["error", "always"]
+  template-curly-spacing: "off" # > control by Prettier
 
   # Standard Rules > https://standardjs.com/rules.html#rules
-  space-before-function-paren: off
+  space-before-function-paren: "off"

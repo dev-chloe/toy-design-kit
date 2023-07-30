@@ -6,36 +6,36 @@ function getKindStyles({ kind, theme }: ThemedStyledProps<RootStyleProps, Defaul
   switch (kind) {
     case "primary":
       return css`
-        background: ${ colors.accent };
-        color: ${ colors.white };
+        background: ${colors.accent};
+        color: ${colors.white};
         
         &:hover {
-          border: 1px solid ${ colors.accent };
-          background: ${ colors.white };
-          color: ${ colors.accent };
+          border: 1px solid ${colors.accent};
+          background: ${colors.white};
+          color: ${colors.accent};
         }
       `;
     case "secondary":
       return css`
-        background: ${ colors.black };
-        color: ${ colors.white };
+        background: ${colors.black};
+        color: ${colors.white};
         &:hover {
-          border: 1px solid ${ colors.black };
-          background: ${ colors.white };
-          color: ${ colors.black };
+          border: 1px solid ${colors.black};
+          background: ${colors.white};
+          color: ${colors.black};
         }
       `;
     case "ghost":
       return css`
-        background: ${ colors.gray };
-        color: ${ colors.white };
-        border: 1px solid ${ colors.gray };
+        background: ${colors.gray};
+        color: ${colors.white};
+        border: 1px solid ${colors.gray};
       `;
   }
 }
 
 const Root = styled.button<RootStyleProps>`
-  ${ (props) => getKindStyles(props) }
+  ${(props) => getKindStyles(props)}
   display: flex;
   align-items: baseline;
   justify-content: center;

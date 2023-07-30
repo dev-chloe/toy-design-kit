@@ -145,7 +145,7 @@ npx storybook@latest init
       storybook@7.0.26
     Ok to proceed? (y) # y
 
-    storybook init - the simplest way to add a Storybook to your project. 
+    storybook init - the simplest way to add a Storybook to your project.
 
     • Detecting project type. ✓
     • Adding Storybook support to your "Next" app
@@ -224,6 +224,19 @@ Using with ESLint: [`eslint-config-standard`](https://github.com/standard/eslint
 npm install --save-dev eslint-config-standard
 ```
 
+- [`.eslintrc.yaml`](./.eslintrc.yaml#L5)
+- [`next.config.js`](next.config.js#L3-L11)
+
+##### A-5-4. Set beutify use [Prettier](https://prettier.io/docs/en/integrating-with-linters.html)
+
+Using with ESLint: [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#readme)
+
+```bash
+npm install --save-dev eslint-config-prettier
+```
+
+- [`.eslintrc.yaml`](./.eslintrc.yaml#L6)
+
 ## B. Develop Storybook
 
 > Read more: [**Storybook for Next.js**](https://github.com/storybookjs/storybook/tree/next/code/frameworks/nextjs#readme)
@@ -234,72 +247,72 @@ npm install --save-dev eslint-config-standard
 
 1. Install
 
-    ```bash
-    npm install -D @storybook/addon-designs
-    ```
+   ```bash
+   npm install -D @storybook/addon-designs
+   ```
 
 2. Register the addon in [`main.ts`](.storybook/main.ts)
 
-    ```typescript
-    // .storybook/main.ts
-    import type { StorybookConfig } from "@storybook/nextjs";
-    const config: StorybookConfig = {
-      // ...
-      addons: [
-        "@storybook/addon-designs", // add this!
-      ],
-      // ...
-    };
-    ```
+   ```typescript
+   // .storybook/main.ts
+   import type { StorybookConfig } from "@storybook/nextjs";
+   const config: StorybookConfig = {
+     // ...
+     addons: [
+       "@storybook/addon-designs", // add this!
+     ],
+     // ...
+   };
+   ```
 
 3. Set environment variable: `TOY_DK_FIGMA_URL`
 
-    ```bash
-    # Setting
-    export TOY_DK_FIGMA_URL="__FIGMA_PROJECT_URL__"
-    
-    # Check
-    env | grep "TOY_DK"
-    ```
+   ```bash
+   # Setting
+   export TOY_DK_FIGMA_URL="__FIGMA_PROJECT_URL__"
 
-    Copy the value to `.env` file using [`envsubst`](https://www.baeldung.com/linux/envsubst-command)
+   # Check
+   env | grep "TOY_DK"
+   ```
 
-    ```bash
-    # Backup first, if exist
-    [ -f .env ] \
-      && mv .env ".env.x.$(date '+%y-%m-%d_%H-%M-%S')" \
-      || echo "Nothing to backup"
+   Copy the value to `.env` file using [`envsubst`](https://www.baeldung.com/linux/envsubst-command)
 
-    # Set on file
-    envsubst < .env.template >> .env
-    ```
+   ```bash
+   # Backup first, if exist
+   [ -f .env ] \
+     && mv .env ".env.x.$(date '+%y-%m-%d_%H-%M-%S')" \
+     || echo "Nothing to backup"
 
-    Add [`.gitignore`](.gitignore) for all `.env` files exclude [`.env.template`](./.env.template)
+   # Set on file
+   envsubst < .env.template >> .env
+   ```
 
-    ```gitignore
-    ### Injection Poinst - Sensivie Data ###
-    *.env.*
-    !.env.template
-    ```
+   Add [`.gitignore`](.gitignore) for all `.env` files exclude [`.env.template`](./.env.template)
+
+   ```gitignore
+   ### Injection Poinst - Sensivie Data ###
+   *.env.*
+   !.env.template
+   ```
 
 4. [Add it to story!](https://github.com/storybookjs/addon-designs#3-add-it-to-story)
 
-    ```typescript
-    // stories/*.stories.ts
-    const figmaUrl = process.env.TOY_DK_FIGMA_URL;
+   ```typescript
+   // stories/*.stories.ts
+   const figmaUrl = process.env.TOY_DK_FIGMA_URL;
 
-    const meta: Meta<typeof C> = {
-      // ...
-      parameters: {
-        design: {
-          type: 'figma',
-          url: `${figmaUrl}?node-id=0-0`
-        }
-      }
-    };
-    ```
+   const meta: Meta<typeof C> = {
+     // ...
+     parameters: {
+       design: {
+         type: "figma",
+         url: `${figmaUrl}?node-id=0-0`,
+       },
+     },
+   };
+   ```
 
-    > TODO: Follow up the issue: [StorybookConfig 'env' key type error](https://github.com/storybookjs/storybook/issues/19691)
+   > TODO: Follow up the issue: [StorybookConfig 'env' key type error](https://github.com/storybookjs/storybook/issues/19691)
 
 ### B-2. ~~Use SCSS~~ -> Replace to [use `styled-components`](#b-3-use-styled-components)
 
@@ -380,88 +393,88 @@ open http://localhost:16006/
 
 1. Prepare AWS CLI v2 (check [other ways](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html)):
 
-    ```bash
-    # Install
-    brew install awscli
+   ```bash
+   # Install
+   brew install awscli
 
-    # Check
-    aws --version
-      # aws-cli/2.xx.x ...
-    ```
+   # Check
+   aws --version
+     # aws-cli/2.xx.x ...
+   ```
 
-    ```bash
-    # Install recommend
-    brew install jq
+   ```bash
+   # Install recommend
+   brew install jq
 
-    # Check
-    jq --version
-      # jq-1.6
-    ```
+   # Check
+   jq --version
+     # jq-1.6
+   ```
 
 2. [Set AWS credetials (after IAM user & role setting)](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-configure-files.html#cli-configure-files-methods):
 
-    ```bash
-    # Save credentials
-    aws configure
-      # AWS Access Key ID [None]: (paste the Access Key ID)
-      # AWS Secret Access Key [None]: (paste the Secret Access Key)
-      # Default region name [None]: ap-northeast-2
-      # Default output format [None]: json
+   ```bash
+   # Save credentials
+   aws configure
+     # AWS Access Key ID [None]: (paste the Access Key ID)
+     # AWS Secret Access Key [None]: (paste the Secret Access Key)
+     # Default region name [None]: ap-northeast-2
+     # Default output format [None]: json
 
-    # Check the sensitive data
-    cat ~/.aws/credentials
+   # Check the sensitive data
+   cat ~/.aws/credentials
 
-    # Set profile
-    export AWS_PROFILE="__profile_name__"
+   # Set profile
+   export AWS_PROFILE="__profile_name__"
 
-    # Check the credentials
-    aws sts get-caller-identity --output=json | jq
-    ```
+   # Check the credentials
+   aws sts get-caller-identity --output=json | jq
+   ```
 
 3. [Create new bucket using Amazon S3](https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/creating-bucket.html):
-    `story.poc-in.site`
+   `story.poc-in.site`
 
-    ```bash
-    # Check the created bucket exist
-    aws s3 ls | grep "story.poc-in.site"
-    ```
+   ```bash
+   # Check the created bucket exist
+   aws s3 ls | grep "story.poc-in.site"
+   ```
 
-    Ref. [`aws s3 ls` command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html)
+   Ref. [`aws s3 ls` command](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html)
 
 4. [Create new public certificate using AWS Certificate Manager](https://docs.aws.amazon.com/ko_kr/acm/latest/userguide/gs-acm-request-public.html)  
-    Then, record to DNS service to validate the certificate:
+   Then, record to DNS service to validate the certificate:
 
-    ```bash
-    # Check the DNS record
-    nslookup <CNAME>
-    # or
-    dig <CNAME>
-    ```
+   ```bash
+   # Check the DNS record
+   nslookup <CNAME>
+   # or
+   dig <CNAME>
+   ```
 
 5. [Create new distribution using AWS CloudFront](https://docs.aws.amazon.com/ko_kr/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
 
 6. [Deploy the static storybook to Amazon S3 bucket](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-managing-objects-sync):
 
-    ```bash
-    # Set environment variable
-    export TARGET_BUCKET="story.poc-in.site"
-    env | grep "TARGET_BUCKET"
-    
-    # Check local directory(source)
-    ls -shl "./storybook-static/."
+   ```bash
+   # Set environment variable
+   export TARGET_BUCKET="story.poc-in.site"
+   env | grep "TARGET_BUCKET"
 
-    # Sync objects from source to target
-    aws s3 sync "./storybook-static/." "s3://${TARGET_BUCKET}"
+   # Check local directory(source)
+   ls -shl "./storybook-static/."
 
-    # Check remote S3 bucket(target)
-    aws s3 ls "s3://${TARGET_BUCKET}"
-    ```
+   # Sync objects from source to target
+   aws s3 sync "./storybook-static/." "s3://${TARGET_BUCKET}"
+
+   # Check remote S3 bucket(target)
+   aws s3 ls "s3://${TARGET_BUCKET}"
+   ```
 
 7. Check on my browser:
 
-    ```bash
-    open https://story.poc-in.site/
-    ```
+   ```bash
+   open https://story.poc-in.site/
+   ```
 
 ## D. Publish react components
 

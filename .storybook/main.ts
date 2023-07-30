@@ -1,6 +1,10 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 const config: StorybookConfig = {
-  stories: ["./Tokens/**/*.stories.@(js|jsx|ts|tsx)", "../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: [
+    "./Tokens/**/*.stories.@(js|jsx|ts|tsx)",
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -10,12 +14,12 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: "@storybook/nextjs",
-    options: {}
+    options: {},
   },
   docs: {
-    autodocs: "tag"
+    autodocs: "tag",
   },
-  env: {}
+  env: {},
   // TODO: https://github.com/storybookjs/storybook/issues/19691
   // env: (config) => ({
   //   ...config,

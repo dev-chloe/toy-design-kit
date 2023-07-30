@@ -1,4 +1,4 @@
-import jsx from "acorn-jsx"
+import jsx from "acorn-jsx";
 import typescript from "@rollup/plugin-typescript";
 
 const commonOutputConfig = {
@@ -30,12 +30,10 @@ const config = {
     typescript({
       tsconfig: "./tsconfig.build.json",
       declaration: true,
-      declarationDir: 'dist',
+      declarationDir: "dist",
     }),
   ],
-  external: [
-    "react",
-  ],
+  external: ["react"],
 };
 
 export default config;

@@ -11,6 +11,6 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors: Colors;
   }
-};
+}
 
 export type { Colors };
