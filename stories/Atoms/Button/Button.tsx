@@ -1,19 +1,21 @@
-import { ButtonProps } from "./types";
-import "./Button.scss";
+import { Root as StyledRoot } from "./Button.styled";
+import { ButtonProps } from "./Button.types";
 
 export function Button({
   kind,
   label,
   disabled = false,
   onClick,
-}: ButtonProps) {
+  type = "button",
+}: ButtonProps): React.JSX.Element {
   return (
-    <button
-      className={`btn btn_${kind}`}
+    <StyledRoot
+      kind={kind}
       disabled={disabled}
       onClick={(e) => onClick?.(e)}
+      type={type}
     >
       {label}
-    </button>
+    </StyledRoot>
   );
 }

@@ -1,4 +1,5 @@
-import type { Colors, DefaultTheme } from "./types";
+import { DefaultTheme } from "styled-components";
+import type { Colors } from "./types";
 
 const colors: Colors = {
   black: "#000000",

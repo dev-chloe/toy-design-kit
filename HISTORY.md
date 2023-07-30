@@ -293,12 +293,58 @@ npm run lint && echo ""
 
     > TODO: Follow up the issue: [StorybookConfig 'env' key type error](https://github.com/storybookjs/storybook/issues/19691)
 
-### B-2. Use SCSS
+### B-2. ~~Use SCSS~~ -> Replace to [use `styled-components`](#b-3-use-styled-components)
+
+<details>
+<summary>History about <code>.scss</code> file usage:</summary>
+<br/>
 
 > When using `@storybook/nextjs`, you don't need to configure sass.
 > [**Just add scss file**](./stories/Atoms/Button/Button.tsx#L2).
 >
 > Read more. [storybook.js issue - SaasError: expected "{"](https://github.com/storybookjs/storybook/issues/19266#issuecomment-1499220336)
+
+</details>
+
+### B-3. Use [styled-components](https://styled-components.com/docs/basics#installation)
+
+```bash
+# Install version 5
+npm install styled-components@">=5.3.6 <6.0.0"
+npm install --save-dev @types/styled-components@">=5.1.26 <6.0.0"
+```
+
+> _**Note:** Maybe need to migrate from 5 to 6 on `styled-components` library_
+>
+> The package [`@types/styled-compnents` still latest version is `5.1.26` version before a years ago](https://www.npmjs.com/package/@types/styled-components?activeTab=versions).
+> And the package [`styled-components` is recently edited at `6.0.x` version, but major usages are at `5.3.x` version.](https://www.npmjs.com/package/styled-components?activeTab=versions).
+
+```ruby
+# Related scripts
+./
+├── .storybook/
+│   ├── Tokens/
+│   │   └── Color.stories.tsx
+│   ├── decorators./
+│   │   ├── index.js
+│   │   └── withTheme.decorator.js
+│   ├── main.ts
+│   └── preview.ts
+│
+└── stories/
+    ├── Atoms/
+    │   ├── Button/
+    │   │   ├── Button.stories.tsx
+    │   │   ├── Button.styled.ts
+    │   │   ├── Button.tsx
+    │   │   ├── Button.types.ts
+    │   │   └── index.ts
+    │   └── index.ts
+    └── theme/
+        ├── index.ts
+        ├── theme.ts
+        └── types.ts
+```
 
 ## C. Publish Storybook
 
@@ -390,15 +436,14 @@ open http://localhost:16006/
 
     ```bash
     # Set environment variable
-    export SOURCE_DIST="storybook-static"
     export TARGET_BUCKET="story.poc-in.site"
-    env | egrep "SOURCE_DIST|TARGET_BUCKET"
+    env | grep "TARGET_BUCKET"
     
     # Check local directory(source)
-    ls -shl "./${SOURCE_DIST}/."
+    ls -shl "./storybook-static/."
 
     # Sync objects from source to target
-    aws s3 sync "./${SOURCE_DIST}/." "s3://${TARGET_BUCKET}"
+    aws s3 sync "./storybook-static/." "s3://${TARGET_BUCKET}"
 
     # Check remote S3 bucket(target)
     aws s3 ls "s3://${TARGET_BUCKET}"
@@ -409,3 +454,57 @@ open http://localhost:16006/
     ```bash
     open https://story.poc-in.site/
     ```
+
+## D. Publish react components
+
+### D-1. Select package registry
+
+- **Vendor-managed services**
+
+  - [x] [NPM packages](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) (default)
+  - [ ] [GitHub packages](https://docs.github.com/ko/packages/learn-github-packages/publishing-a-package)
+  - [ ] [AWS CodeArtifact](https://docs.aws.amazon.com/ko_kr/codeartifact/latest/ug/welcome.html)
+
+- **Self-managed services**
+
+  - [ ] [Sonartype Nexus OSS](https://github.com/sonatype/nexus-public#readme)
+  - [ ] [JFlog Artifactory](https://jfrog.awsworkshop.io/1_introduction.html)
+
+### D-2. Select package privacy
+
+- [scoped public package](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages)
+
+- Select package name with [package name guidelines](https://docs.npmjs.com/package-name-guidelines):
+  [`toy-design-kit`](https://www.npmjs.com/search?q=toy-design-kit)
+
+- TODO: LICENSE
+
+### D-3. Setup Rollup.js
+
+[Installing Rollup locally](https://rollupjs.org/tutorial/#installing-rollup-locally)
+
+```bash
+# Insatll
+npm install --save-dev rollup
+
+# Check
+npx rollup --version
+
+# Install plugin for typescript module
+npm install --save-dev @rollup/plugin-typescript
+```
+
+Setup configuration:
+
+- [`tsconfig.build.json`](./tsconfig.build.json)
+- [`rollup.config.ts`](./rollup.config.ts)
+- plugin configurations:
+  - [basic](https://rollupjs.org/command-line-interface/#configplugin-plugin)
+  - [@rollup/plugin-typescript](https://github.com/rollup/plugins/tree/master/packages/typescript#readme)
+
+```bash
+# Test build
+npx rollup \
+  --config rollup.config.ts \
+  --configPlugin typescript
+```
