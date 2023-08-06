@@ -36,3 +36,45 @@ Ok to proceed? (y) # y
 . ✓
  • Preparing to install dependencies. ✓
 ```
+
+## C. Setup ESLint with [JS Standard Style](https://standardjs.com/index.html#install)
+
+Follow up [this document (Getting Started with ESLint)](https://eslint.org/docs/latest/use/getting-started)
+
+```bash
+# Install ESLint on current package
+npm init @eslint/config
+
+✔ How would you like to use ESLint? # style
+✔ What type of modules does your project use? # esm
+✔ Which framework does your project use? # react
+✔ Does your project use TypeScript? # Yes
+✔ Where does your code run? # browser
+✔ How would you like to define a style for your project? # guide
+✔ Which style guide do you want to follow? # standard-with-typescript
+✔ What format do you want your config file to be in? # YAML
+
+✔ Would you like to install them now? # Yes
+✔ Which package manager do you want to use? # npm
+
+# Check
+npx eslint --version
+# v8.46.0
+```
+
+Add custom command in [`package.json`](../package.json) file:
+
+```json
+{
+  // ...
+  "scripts": {
+    "lint": "npx eslint --fix -- .storybook/**/*.ts stories/**/*.ts stories/**/*.tsx",
+    // ...
+  },
+  // ...
+}
+```
+
+Edit eslint configuration at [`.eslintrc.yaml`](../.eslintrc.yaml) file
+
+Also add [`.eslintignore`](../.eslintignore) file
