@@ -1,0 +1,21 @@
+{
+  "name": "toy-design-kit",
+  "version": "0.1.0",
+  "description": "Toy Design Kit",
+  "license": "ISC",
+  "author": "dev-chloe <chloekim.4969@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-chloe/toy-design-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dev-chloe/toy-design-kit/issues"
+  },
+  "homepage": "https://github.com/dev-chloe/toy-design-kit#readme",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "react",
+    "storybook"
+  ]
+}
