@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+prefix="husky ::"
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+# Block to long-lived branch(main) directly.
+echo ""
+echo "${prefix} [INFO] This is '${branch}' branch."
+if [ "$branch" = "main" ]; then
+  echo ""
+  echo "${prefix} [WARN] You can't commit directly to main branch."
+  echo "${prefix} [HINT] Create a support branch first."
+  echo ""
+  echo "       $ git switch -c <new_branch_name>"
+  echo ""
+  exit 1
+fi
+
+# Test First
+# echo ""
+# echo "${prefix} [INFO] Test before commit."
+# npm run test && echo ""
+
+# Lint First
+echo "${prefix} [INFO] Lint before commit."
+npm run lint
+echo ""
