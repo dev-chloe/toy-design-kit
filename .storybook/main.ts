@@ -2,6 +2,7 @@ import type { StorybookConfig } from "@storybook/react-webpack5";
 
 const config: StorybookConfig = {
   stories: [
+    "./Tokens/**/*.stories.@(js|jsx|ts|tsx)",
     "../stories/**/*.mdx",
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
@@ -10,6 +11,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@storybook/addon-designs",
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -19,4 +21,5 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
 };
+
 export default config;
