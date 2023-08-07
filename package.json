@@ -17,7 +17,8 @@
     "prepare": "husky install",
     "lint": "npx eslint --fix -- .storybook/**/*.ts stories/**/*.ts stories/**/*.tsx",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "serve-storybook": "npx serve --listen 16006 ./storybook-static"
   },
   "keywords": [
     "react",
@@ -50,6 +51,7 @@
     "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "serve": "^14.2.0",
     "storybook": "^7.2.1",
     "typescript": "^5.1.6"
   },
