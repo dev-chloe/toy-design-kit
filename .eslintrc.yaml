@@ -12,12 +12,12 @@ parserOptions:
     - "./tsconfig.json"
 
 extends:
-  # https://github.com/prettier/eslint-config-prettier#readme
-  - prettier
-  # https://github.com/standard/eslint-config-standard#readme
-  - standard-with-typescript
   # https://github.com/jsx-eslint/eslint-plugin-react#configuration
   - plugin:react/recommended
+  # https://github.com/standard/eslint-config-standard#readme
+  - standard-with-typescript
+  # https://github.com/prettier/eslint-config-prettier#readme
+  - prettier # << Make sure to put it last
 
 plugins:
   - react
@@ -52,6 +52,7 @@ rules:
   "@typescript-eslint/comma-dangle": ["error", "always-multiline"]
   "@typescript-eslint/explicit-function-return-type": "off"
   "@typescript-eslint/member-delimiter-style": "off" # > hand over to prettier
+  "@typescript-eslint/restrict-template-expressions": "off"
 
   # Standard-JS Rules > https://standardjs.com/rules.html#rules
   space-before-function-paren: "off"

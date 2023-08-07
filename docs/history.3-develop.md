@@ -13,6 +13,33 @@ npm install --save-dev @types/styled-components@">=5.1.26 <6.0.0"
 > The package [`@types/styled-compnents` still latest version is `5.1.26` version before a years ago](https://www.npmjs.com/package/@types/styled-components?activeTab=versions).
 > And the package [`styled-components` is recently edited at `6.0.x` version, but major usages are at `5.3.x` version.](https://www.npmjs.com/package/styled-components?activeTab=versions).
 
+```ruby
+# Related scripts
+./
+├── .storybook/
+│   ├── Tokens/
+│   │   └── Color.stories.tsx
+│   ├── decorators./
+│   │   ├── index.js
+│   │   └── withTheme.decorator.js
+│   ├── main.ts
+│   └── preview.ts
+│
+└── stories/
+    ├── Atoms/
+    │   ├── Button/
+    │   │   ├── Button.stories.tsx
+    │   │   ├── Button.styled.ts
+    │   │   ├── Button.tsx
+    │   │   ├── Button.types.ts
+    │   │   └── index.ts
+    │   └── index.ts
+    └── theme/
+        ├── index.ts
+        ├── theme.ts
+        └── types.ts
+```
+
 ## B. Setup [@storybook/addon-designs](https://github.com/storybookjs/addon-designs#readme) for Figma
 
 > A Storybook addon that embed Figma or websites in the addon panel for better design-development workflow.

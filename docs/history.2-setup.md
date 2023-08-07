@@ -141,6 +141,6 @@ Using with ESLint: [`eslint-config-prettier`](https://github.com/prettier/eslint
 npm install --save-dev eslint-config-prettier
 ```
 
-- [`.eslintrc.yaml`](../.eslintrc.yaml#L15-L16)
+- [`.eslintrc.yaml`](../.eslintrc.yaml#L19-L20)
 - [`.prettierrc.yaml`](../.prettierrc.yaml)
 - [`.prettierignore`](../.prettierignore)
