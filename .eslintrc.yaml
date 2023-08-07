@@ -12,6 +12,8 @@ parserOptions:
     - "./tsconfig.json"
 
 extends:
+  # https://github.com/prettier/eslint-config-prettier#readme
+  - prettier
   # https://github.com/standard/eslint-config-standard#readme
   - standard-with-typescript
   # https://github.com/jsx-eslint/eslint-plugin-react#configuration
@@ -23,7 +25,18 @@ plugins:
 rules:
   # ESLint Default Rules > https://eslint.org/docs/latest/rules
   eol-last: ["error", "always"]
-  "react/no-unescaped-entities": ["error", {"forbid": [{char: ">", alternatives: ['&gt;']}, {char: "}", alternatives: ['&#125;']}]}]
+  "react/no-unescaped-entities":
+    [
+      "error",
+      {
+        "forbid":
+          [
+            { char: ">", alternatives: ["&gt;"] },
+            { char: "}", alternatives: ["&#125;"] },
+          ],
+      },
+    ]
+  multiline-ternary: "off" # avoid conflicts with indent option
 
   # Typescript-ESLint Rules > https://typescript-eslint.io/rules/
   indent: "off" # > hand over to ts-eslint
@@ -33,8 +46,12 @@ rules:
   semi: "off" # > hand over to ts-eslint
   "@typescript-eslint/semi": ["error", "always"]
   comma-dangle: "off" # > hand over to ts-eslint
+  "object-curly-spacing": "off" # > hand over to ts-eslint
+  "@typescript-eslint/object-curly-spacing": ["error", "always"]
+
   "@typescript-eslint/comma-dangle": ["error", "always-multiline"]
   "@typescript-eslint/explicit-function-return-type": "off"
+  "@typescript-eslint/member-delimiter-style": "off" # > hand over to prettier
 
   # Standard-JS Rules > https://standardjs.com/rules.html#rules
   space-before-function-paren: "off"

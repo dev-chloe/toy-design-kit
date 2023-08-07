@@ -132,3 +132,15 @@ echo "${prefix} [INFO] Lint before commit."
 npm run lint
 echo ""
 ```
+
+## E. Install [Prettier](https://prettier.io/docs/en/integrating-with-linters.html)
+
+Using with ESLint: [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#readme)
+
+```bash
+npm install --save-dev eslint-config-prettier
+```
+
+- [`.eslintrc.yaml`](../.eslintrc.yaml#L15-L16)
+- [`.prettierrc.yaml`](../.prettierrc.yaml)
+- [`.prettierignore`](../.prettierignore)
