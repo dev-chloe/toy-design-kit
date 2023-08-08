@@ -22,6 +22,10 @@ extends:
 plugins:
   - react
 
+settings:
+  react:
+    version: "detect" # automatically picks the version installed
+
 rules:
   # ESLint Default Rules > https://eslint.org/docs/latest/rules
   eol-last: ["error", "always"]

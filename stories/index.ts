@@ -1,2 +1,2 @@
-export * as Atoms from "./Atoms";
-export * as theme from "./theme";
+export * from "./Atoms/Button";
+export * from "./theme";

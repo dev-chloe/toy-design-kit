@@ -4,7 +4,7 @@
 
 ```bash
 # Install version 5
-npm install styled-components@">=5.3.6 <6.0.0"
+npm install --save-dev styled-components@">=5.3.6 <6.0.0"
 npm install --save-dev @types/styled-components@">=5.1.26 <6.0.0"
 ```
 

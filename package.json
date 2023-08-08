@@ -12,13 +12,20 @@
     "url": "https://github.com/dev-chloe/toy-design-kit/issues"
   },
   "homepage": "https://github.com/dev-chloe/toy-design-kit#readme",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "prepare": "husky install",
     "lint": "npx eslint --fix -- .storybook/**/*.ts stories/**/*.ts stories/**/*.tsx",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "serve-storybook": "npx serve --listen 16006 ./storybook-static"
+    "build": "npm run build-storybook && npm run build-design-kit",
+    "build-storybook": "npx rimraf ./storybook-static && storybook build",
+    "serve-storybook": "npx serve --listen 16006 ./storybook-static",
+    "build-design-kit": "npx rimraf ./dist && npx rollup --config rollup.config.ts --configPlugin typescript && tsc -p ./tsconfig.build.json --emitDeclarationOnly"
   },
   "keywords": [
     "react",
@@ -28,6 +35,8 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-typescript": "^11.1.2",
     "@storybook/addon-designs": "^7.0.1",
     "@storybook/addon-essentials": "^7.2.1",
     "@storybook/addon-interactions": "^7.2.1",
@@ -51,11 +60,10 @@
     "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup": "^3.27.2",
     "serve": "^14.2.0",
     "storybook": "^7.2.1",
+    "styled-components": "^5.3.11",
     "typescript": "^5.1.6"
-  },
-  "dependencies": {
-    "styled-components": "^5.3.11"
   }
 }

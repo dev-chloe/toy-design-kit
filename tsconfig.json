@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
@@ -18,10 +18,14 @@
     "target": "es5"
   },
   "include": [
+    // Storybook modules
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
+    // React components
     "stories/**/*.ts",
-    "stories/**/*.tsx"
+    "stories/**/*.tsx",
+    // Rollup config
+    "rollup.config.ts"
   ],
-  "exclude": ["coverage", "dist", "node_modules", "storybook"]
+  "exclude": ["coverage", "dist", "node_modules"]
 }
