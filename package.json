@@ -2,8 +2,9 @@
   "name": "toy-design-kit",
   "version": "0.1.0",
   "description": "Toy Design Kit",
-  "license": "ISC",
+  "license": "MIT",
   "author": "dev-chloe <chloekim.4969@gmail.com>",
+  "homepage": "https://github.com/dev-chloe/toy-design-kit#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dev-chloe/toy-design-kit.git"
@@ -11,13 +12,14 @@
   "bugs": {
     "url": "https://github.com/dev-chloe/toy-design-kit/issues"
   },
-  "homepage": "https://github.com/dev-chloe/toy-design-kit#readme",
+  "readme": "./README.md",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
+  "files": ["/dist"],
   "scripts": {
     "prepare": "husky install",
     "lint": "eslint --fix -- .storybook/**/*.ts stories/**/*.ts stories/**/*.tsx",
