@@ -25,8 +25,8 @@ npm run build
 
 You need to check below contents before publishing
 
-1. [Check static storybook](#check-static-storybook)
-2. [Check react components library](#check-react-components-library)
+1. [Check static storybook](https://github.com/dev-chloe/toy-design-kit#check-static-storybook)
+2. [Check react components library](https://github.com/dev-chloe/toy-design-kit#check-react-components-library)
 
 ### Check static storybook
 
@@ -45,7 +45,7 @@ npm run storybook-static
 npm run build:design-kit
 ```
 
-Check process example:
+Check process using [`toy-web` repository](https://github.com/dev-chloe/toy-web):
 
 ```bash
 # At the root of other repository, in another terminal
