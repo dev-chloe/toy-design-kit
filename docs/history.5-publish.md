@@ -116,13 +116,14 @@ Check with this npm badge: &nbsp;[![npm][npm-image]][npm-url]
 ```bash
 # Set sementic versioning
 export NEW_VERSION="0.1.0"
-env | grep NEW_VERSION
+export NEW_MESSAGE="🎉 Release version '${NEW_VERSION}'"
+env | grep NEW_
 
 # Create new tag on current commit of branch
 # with commit hash, annotation and message
 git tag \
-  --annotate "${NEW_VERSION}" \
-  --message="## Release version ${NEW_VERSION} 🎉"
+    --annotate "${NEW_VERSION}" \
+    --message "${NEW_MESSAGE}"
 
 # Check created tag on list
 git tag --list ${NEW_VERSION}
@@ -133,8 +134,8 @@ git show ${NEW_VERSION}
 # Push this tags on this branch to remote
 git push origin $(git branch --show-current) --tags
 
-# (option) Refresh others
-git fetch --tag --prune -u origin
+# Check on log
+git log --oneline
 ```
 
 ### Remove a tag
