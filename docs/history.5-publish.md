@@ -76,7 +76,7 @@ jq '.devDependencies' package.json | egrep "file|design-kit"
 # "toy-design-kit": "file:../toy-design-kit",
 ```
 
-## D. Publish to Node Package Registy
+## D. Publish to Node Package Registy with tag
 
 ### Using NPM
 
@@ -108,3 +108,45 @@ Check with this npm badge: &nbsp;[![npm][npm-image]][npm-url]
 
 [npm-image]: <https://img.shields.io/npm/v/toy-design-kit.svg>
 [npm-url]: <https://npmjs.org/package/toy-design-kit>
+
+## E. Publish git-tag to GitHub Repository
+
+### Create new tag
+
+```bash
+# Set sementic versioning
+export NEW_VERSION="0.1.0"
+env | grep NEW_VERSION
+
+# Create new tag on current commit of branch
+# with commit hash, annotation and message
+git tag \
+  --annotate "${NEW_VERSION}" \
+  --message="## Release version ${NEW_VERSION} 🎉"
+
+# Check created tag on list
+git tag --list ${NEW_VERSION}
+
+# Check created tag with detail
+git show ${NEW_VERSION}
+
+# Push this tags on this branch to remote
+git push origin $(git branch --show-current) --tags
+
+# (option) Refresh others
+git fetch --tag --prune -u origin
+```
+
+### Remove a tag
+
+```bash
+# Set sementic versioning
+export TARGET_VERSION="0.1.0"
+env | grep TARGET_VERSION
+
+# Remove a tag with pick
+git tag --delete ${TARGET_VERSION}
+
+# Remove the removed tag at the remote repository (origin)
+git push origin ":${TARGET_VERSION}"
+```
