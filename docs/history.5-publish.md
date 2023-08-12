@@ -68,9 +68,43 @@ npm run build-design-kit
 ```bash
 # Try implement repository after build design kit
 cd ../toy-web
-npm install --save-dev ../toy-design-kit
+npm uninstall toy-design-kit  # remove
+npm install ../toy-design-kit # reinstall
 
 # Check package.json
 jq '.devDependencies' package.json | egrep "file|design-kit"
 # "toy-design-kit": "file:../toy-design-kit",
 ```
+
+## D. Publish to Node Package Registy
+
+### Using NPM
+
+[Add a registry user account in local npm](https://docs.npmjs.com/cli/v9/using-npm/developers#create-a-user-account):
+
+```bash
+# Check this package's npm registry
+export NPM_REGISTRY=$(jq '.publishConfig.registry' package.json | tr -d '"' | sed -e 's/https\://')
+env | grep NPM_REGISTRY
+
+# Add a npm registry user account
+npm adduser
+
+# Check local stored token
+cat ~/.npmrc | grep "${NPM_REGISTRY}"
+```
+
+[Publish this package](https://docs.npmjs.com/cli/v9/using-npm/developers#publish-your-package):
+
+```bash
+# Init npm repotisoty
+npm publish
+
+# Check result
+npm dist-tag ls
+```
+
+Check with this npm badge: &nbsp;[![npm][npm-image]][npm-url]
+
+[npm-image]: <https://img.shields.io/npm/v/toy-design-kit.svg>
+[npm-url]: <https://npmjs.org/package/toy-design-kit>
