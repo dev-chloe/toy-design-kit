@@ -9,7 +9,7 @@
     // Preserve type decration
     "emitDeclarationOnly": true, // https://www.typescriptlang.org/tsconfig#emitDeclarationOnly
     "declaration": true, // https://www.typescriptlang.org/tsconfig#declaration
-    // "declarationDir": "./dist" // https://www.typescriptlang.org/tsconfig#declarationDir
+    "declarationDir": "./dist" // https://www.typescriptlang.org/tsconfig#declarationDir
   },
   "include": [
     // React components

@@ -37,8 +37,7 @@ const config = {
     }),
     typescript({
       tsconfig: "./tsconfig.build.json",
-      declaration: true,
-      declarationDir: "dist",
+      noForceEmit: true, // use defers to the values set in tsconfig
     }),
   ],
   external: ["react", "styled-components"],
