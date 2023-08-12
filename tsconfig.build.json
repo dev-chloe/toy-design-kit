@@ -13,16 +13,12 @@
   },
   "include": [
     // React components
-    "stories/Atoms/**.*",
-    "stories/styles/**.*",
-    "stories/theme/**.*",
-    "stories/*.ts"
+    "stories/**.ts",
+    "stories/**.tsx",
   ],
   "exclude": [
     // Storybook examples
     "stories/Examples/**.*",
-    // Local testing next components
-    "app/**/*",
     // Storybook modules
     "**/*.stories.ts",
     "**/*.stories.tsx"

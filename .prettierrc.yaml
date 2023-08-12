@@ -1,0 +1,11 @@
+---
+root: true
+
+# https://prettier.io/docs/en/options
+tabWidth: 2
+useTabs: false
+singleQuote: false
+jsxSingleQuote: false
+semi: true
+trailingComma: "all"
+bracketSpacing: true

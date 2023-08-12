@@ -1,22 +1,31 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": false,
+    "outDir": "./dist",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": false, // disable cache on .tsbuildinfo
-    "paths": { "@/*": ["./*"] },
-    "plugins": [{ "name": "next" }]
+    "rootDir": "./",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es5"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    // Storybook modules
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    // React components
+    "stories/**/*.ts",
+    "stories/**/*.tsx",
+    // Rollup config
+    "rollup.config.ts"
+  ],
+  "exclude": ["coverage", "dist", "node_modules"]
 }

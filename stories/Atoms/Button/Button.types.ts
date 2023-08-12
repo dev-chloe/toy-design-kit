@@ -1,14 +1,14 @@
-import React from "react";
+import type React from "react";
 
 type Kind = "primary" | "secondary" | "ghost";
 
 type Type = "button" | "submit";
 
-type RootStyleProps = {
+interface RootStyleProps {
   disabled?: boolean;
   kind?: Kind;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
+}
 
 type ButtonProps = RootStyleProps & {
   label?: string;

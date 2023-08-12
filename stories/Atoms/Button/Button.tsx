@@ -1,6 +1,6 @@
 import React from "react";
 import { Root as StyledRoot } from "./Button.styled";
-import { ButtonProps } from "./Button.types";
+import { type ButtonProps } from "./Button.types";
 
 export function Button({
   kind,

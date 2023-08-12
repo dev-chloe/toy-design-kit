@@ -1,5 +1,5 @@
-import styled, { DefaultTheme, ThemedStyledProps, css } from "styled-components";
-import { RootStyleProps } from "./Button.types";
+import styled, { type DefaultTheme, type ThemedStyledProps, css } from "styled-components";
+import { type RootStyleProps } from "./Button.types";
 
 function getKindStyles({ kind, theme }: ThemedStyledProps<RootStyleProps, DefaultTheme>) {
   const { colors } = theme;

@@ -1,16 +1,18 @@
 import "styled-components";
 
-type Colors = {
-  black: string;
-  gray: string;
-  white: string;
-  accent: string;
-};
+interface Colors {
+  readonly black: string;
+  readonly gray: string;
+  readonly white: string;
+  readonly accent: string;
+}
+
+interface DesignKitDefaultTheme {
+  colors: Colors;
+}
 
 declare module "styled-components" {
-  export interface DefaultTheme {
-    colors: Colors;
-  }
+  export interface DefaultTheme extends DesignKitDefaultTheme { }
 }
 
 export type { Colors };

@@ -1,4 +1,4 @@
-import jsx from "acorn-jsx";
+import babel from "@rollup/plugin-babel";
 import typescript from "@rollup/plugin-typescript";
 
 const commonOutputConfig = {
@@ -25,12 +25,19 @@ const config = {
       ...commonOutputConfig,
     },
   ],
-  acornInjectPlugins: [jsx()], // tsx to jsx
   plugins: [
+    babel({ // Transpiling
+      babelHelpers: "bundled",
+      presets: [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-typescript",
+      ],
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+    }),
     typescript({
       tsconfig: "./tsconfig.build.json",
-      declaration: true,
-      declarationDir: "dist",
+      noForceEmit: true, // use defers to the values set in tsconfig
     }),
   ],
   external: ["react", "styled-components"],

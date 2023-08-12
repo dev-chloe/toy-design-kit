@@ -1,0 +1,8 @@
+# data files
+*.yaml
+*.yml
+*.json
+
+# style sheets
+*.css
+*.scss

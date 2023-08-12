@@ -23,6 +23,6 @@ fi
 # npm run test && echo ""
 
 # Lint First
-echo ""
 echo "${prefix} [INFO] Lint before commit."
-npm run lint && echo ""
+npm run lint
+echo ""

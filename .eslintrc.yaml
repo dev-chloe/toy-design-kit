@@ -1,20 +1,62 @@
 ---
 root: true
 
+env:
+  browser: true
+  es2021: true
+
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+  project:
+    - "./tsconfig.json"
+
 extends:
-  - standard # https://github.com/standard/eslint-config-standard#readme
-  - prettier # https://github.com/prettier/eslint-config-prettier#readme
-  - next/core-web-vitals
-  - plugin:storybook/recommended
+  # https://github.com/jsx-eslint/eslint-plugin-react#configuration
+  - plugin:react/recommended
+  # https://github.com/standard/eslint-config-standard#readme
+  - standard-with-typescript
+  # https://github.com/prettier/eslint-config-prettier#readme
+  - prettier # << Make sure to put it last
+
+plugins:
+  - react
+
+settings:
+  react:
+    version: "detect" # automatically picks the version installed
 
 rules:
-  # ESLint default rules > https://eslint.org/docs/latest/rules
-  indent: ["error", 2, { "SwitchCase": 1 }]
-  quotes: ["error", "double"]
-  semi: ["error", "always"]
-  comma-dangle: ["error", "always-multiline"]
+  # ESLint Default Rules > https://eslint.org/docs/latest/rules
   eol-last: ["error", "always"]
-  template-curly-spacing: "off" # > control by Prettier
+  "react/no-unescaped-entities":
+    [
+      "error",
+      {
+        "forbid":
+          [
+            { char: ">", alternatives: ["&gt;"] },
+            { char: "}", alternatives: ["&#125;"] },
+          ],
+      },
+    ]
+  multiline-ternary: "off" # avoid conflicts with indent option
 
-  # Standard Rules > https://standardjs.com/rules.html#rules
+  # Typescript-ESLint Rules > https://typescript-eslint.io/rules/
+  indent: "off" # > hand over to ts-eslint
+  "@typescript-eslint/indent": ["error", 2, { "SwitchCase": 1 }]
+  quotes: "off" # > hand over to ts-eslint
+  "@typescript-eslint/quotes": ["error", "double"]
+  semi: "off" # > hand over to ts-eslint
+  "@typescript-eslint/semi": ["error", "always"]
+  comma-dangle: "off" # > hand over to ts-eslint
+  "object-curly-spacing": "off" # > hand over to ts-eslint
+  "@typescript-eslint/object-curly-spacing": ["error", "always"]
+
+  "@typescript-eslint/comma-dangle": ["error", "always-multiline"]
+  "@typescript-eslint/explicit-function-return-type": "off"
+  "@typescript-eslint/member-delimiter-style": "off" # > hand over to prettier
+  "@typescript-eslint/restrict-template-expressions": "off"
+
+  # Standard-JS Rules > https://standardjs.com/rules.html#rules
   space-before-function-paren: "off"

@@ -1,21 +1,60 @@
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+# Toy Design Kit &nbsp;[![npm][npm-image]][npm-url] [![javascript style guide][standard-image]][standard-url]
 
-# Toy Design Kit
+[npm-image]: https://img.shields.io/npm/v/toy-design-kit.svg
+[npm-url]: https://npmjs.org/package/toy-design-kit
 
-Implement Design Kit
-using [Storybook](https://storybook.js.org/)
-([story.poc-in.site](https://story.poc-in.site/))
-from [Figma](https://www.figma.com/)
-([Toy Design Kit](https://www.figma.com/file/uNwS34VnewsHrnuYcuXzWV/Toy-DK?type=design&node-id=0%3A1&mode=design&t=oBlAbOUOrRktoW5X-1))
+[standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[standard-url]: https://standardjs.com
 
 ## How to use
 
 ```bash
-# Install node dependencies
+# Clean install dependencies without editting lock files
 npm ci
 
-# Start Component Driven Designed Living Document
+# Run Storybook
 npm run storybook
 ```
 
-Read more: [Publish Storybook](./HISTORY.md#c-publish-storybook)
+## How to build
+
+```bash
+# Build all: static storybook & react components library
+npm run build
+```
+
+You need to check below contents before publishing
+
+1. [Check static storybook](#check-static-storybook)
+2. [Check react components library](#check-react-components-library)
+
+### Check static storybook
+
+```bash
+# Build storybook only
+npm run build:storybook
+
+# Host result, then check on browser
+npm run storybook-static
+```
+
+### Check react components library
+
+```bash
+# Build react components only
+npm run build:design-kit
+```
+
+Check process example:
+
+```bash
+# At the root of other repository, in another terminal
+cd ../toy-web
+
+# Re-install built library
+npm uninstall toy-design-kit
+npm install ../toy-design-kit
+
+# Re-run Next.js application
+npm run dev
+```
