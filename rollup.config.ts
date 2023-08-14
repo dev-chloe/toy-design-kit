@@ -16,6 +16,7 @@ const config = {
       // CommonJS Module
       entryFileNames: "[name].js",
       format: "cjs",
+      interop: "auto", // for styled.function - Ref > https://stackoverflow.com/a/76682344
       ...commonOutputConfig,
     },
     {
