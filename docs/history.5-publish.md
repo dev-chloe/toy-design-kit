@@ -58,7 +58,7 @@ Add npm script:
 
 ```bash
 # Test build
-npm run build-design-kit
+npm run build:design-kit
 ```
 
 ## C. [Before Publishing: Make Sure Your Package Installs and Works](https://docs.npmjs.com/cli/v9/using-npm/developers#before-publishing-make-sure-your-package-installs-and-works)

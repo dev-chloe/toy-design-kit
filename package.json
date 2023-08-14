@@ -1,6 +1,6 @@
 {
   "name": "toy-design-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Toy Design Kit",
   "license": "MIT",
   "author": "dev-chloe <chloekim.4969@gmail.com>",
@@ -19,12 +19,15 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "prepare": "husky install",
     "lint": "eslint --fix -- .storybook/**/*.ts stories/**/*.ts stories/**/*.tsx",
     "storybook": "storybook dev -p 6006",
     "storybook-static": "serve --listen 16006 ./storybook-static",
+    "clean": "run-p sb:clean dk:clean",
     "build": "run-s build:*",
     "build:storybook": "run-s sb:clean sb:build",
     "sb:clean": "rimraf ./storybook-static",
@@ -57,6 +60,7 @@
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard-with-typescript": "^37.0.0",

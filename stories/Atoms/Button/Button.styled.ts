@@ -1,7 +1,8 @@
-import styled, { type DefaultTheme, type ThemedStyledProps, css } from "styled-components";
+import styled, { css } from "styled-components";
 import { type RootStyleProps } from "./Button.types";
+import { theme } from "../../theme";
 
-function getKindStyles({ kind, theme }: ThemedStyledProps<RootStyleProps, DefaultTheme>) {
+function getKindStyles({ kind }: RootStyleProps) {
   const { colors } = theme;
   switch (kind) {
     case "primary":

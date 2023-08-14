@@ -92,8 +92,8 @@ Add npm script:
   "scripts": {
     // ...
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "serve-storybook": "npx serve --listen 16006 ./storybook-static"
+    "storybook-static": "npx serve --listen 16006 ./storybook-static",
+    "build:storybook": "storybook build"
   }
   // ...
 }
@@ -103,10 +103,10 @@ Build Storybook as static page, and hosting test:
 
 ```bash
 # Build
-npm run build-storybook
+npm run build:storybook
 
 # Hosting
-npm run serve-storybook
+npm run storybook-static
 
 # Check in the browser
 open http://localhost:16006/

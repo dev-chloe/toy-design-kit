@@ -40,7 +40,32 @@ npm install --save-dev @types/styled-components@">=5.1.26 <6.0.0"
         └── types.ts
 ```
 
-## B. Setup [@storybook/addon-designs](https://github.com/storybookjs/addon-designs#readme) for Figma
+## B. Enable Styled-component in Next.js SSR cycle
+
+Key concept: [styled-components > Server Side Rendering][styled-component-ssr]
+
+[styled-component-ssr]: https://styled-components.com/docs/advanced#server-side-rendering
+
+[**babel-plugin** for styled-components](https://styled-components.com/docs/tooling#babel-plugin):
+
+```bash
+# Install plugin
+npm install --save-dev babel-plugin-styled-components
+```
+
+Set babel configuration: [`.babelrc`](.babelrc)
+
+```json
+{
+  // ..
+  "plugins": [
+    // ..
+    "babel-plugin-styled-components"
+  ]
+}
+```
+
+## C. Setup [@storybook/addon-designs](https://github.com/storybookjs/addon-designs#readme) for Figma
 
 > A Storybook addon that embed Figma or websites in the addon panel for better design-development workflow.
 
