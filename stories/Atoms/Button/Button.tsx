@@ -1,6 +1,6 @@
 import React from "react";
-import { Root as StyledRoot } from "./Button.styled";
 import { type ButtonProps } from "./Button.types";
+import "./Button.css";
 
 export function Button({
   kind,
@@ -10,13 +10,13 @@ export function Button({
   type = "button",
 }: ButtonProps): React.JSX.Element {
   return (
-    <StyledRoot
-      kind={kind}
+    <button
+      className={`btn btn_${kind}`}
       disabled={disabled}
       onClick={(e) => onClick?.(e)}
       type={type}
     >
       {label}
-    </StyledRoot>
+    </button>
   );
 }

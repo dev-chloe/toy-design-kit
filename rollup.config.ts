@@ -1,5 +1,7 @@
 import babel from "@rollup/plugin-babel";
 import typescript from "@rollup/plugin-typescript";
+import scss from "rollup-plugin-scss";
+import { mkdirSync, writeFileSync } from "fs";
 
 const commonOutputConfig = {
   dir: "dist",
@@ -39,6 +41,20 @@ const config = {
     typescript({
       tsconfig: "./tsconfig.build.json",
       noForceEmit: true, // use defers to the values set in tsconfig
+    }),
+    scss({
+      verbose: true,
+      output: (styles, styleNodes) => {
+        for (const filePathKey in styleNodes) {
+          const chunk = filePathKey.replace(/stories/, "dist").split("/");
+          const cssfilename = chunk.pop();
+          if (cssfilename != null) {
+            const cssFolderPath = chunk.join("/");
+            mkdirSync(cssFolderPath, { recursive: true });
+            writeFileSync(`${cssFolderPath}/${cssfilename}`, styleNodes[filePathKey]);
+          }
+        }
+      },
     }),
   ],
   external: ["react", "styled-components"],

@@ -1,0 +1,41 @@
+@import "../../styles/variables.css";
+
+.btn {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: 0;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.btn_primary {
+  background-color: var(--accent);
+  color: var(--white);
+}
+
+.btn_primary:hover {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background-color: var(--white);
+}
+
+.btn_secondary {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.btn_secondary:hover {
+  border: 1px solid var(--black);
+  color: var(--black);
+  background-color: var(--white);
+}
+
+.btn_ghost {
+  border: 1px solid var(--gray);
+  color: var(--white);
+  background-color: var(--gray);
+}

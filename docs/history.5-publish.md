@@ -15,6 +15,9 @@ npm install --save-dev @rollup/plugin-typescript
 
 # Install plugin for babel module
 npm install --save-dev @rollup/plugin-babel
+
+# Install plugin for handling (s)css module
+npm install --save-dev rollup-plugin-scss sass
 ```
 
 Setup configuration:
@@ -50,7 +53,7 @@ Add npm script:
   // ...
   "scripts": {
     // ...
-+   "build-design-kit": "npx rimraf ./dist && npx rollup --config rollup.config.ts --configPlugin typescript"
++   "build:design-kit": "npx rimraf ./dist && npx rollup --config rollup.config.ts --configPlugin typescript"
   }
   // ...
 }

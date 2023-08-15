@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { type RootStyleProps } from "./Button.types";
+import { type RootStyleProps } from "./StyledButton.types";
 import { theme } from "../../theme";
 
 function getKindStyles({ kind }: RootStyleProps) {
