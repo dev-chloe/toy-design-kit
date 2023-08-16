@@ -1,6 +1,6 @@
 {
   "name": "toy-design-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Toy Design Kit",
   "license": "MIT",
   "author": "dev-chloe <chloekim.4969@gmail.com>",
@@ -20,8 +20,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "/dist",
-    "/dist/**.css"
+    "/dist"
   ],
   "scripts": {
     "prepare": "husky install",

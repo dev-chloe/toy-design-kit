@@ -11,6 +11,7 @@ interface RootStyleProps {
 }
 
 type ButtonProps = RootStyleProps & {
+  className?: string;
   label?: string;
   type?: Type;
 };
